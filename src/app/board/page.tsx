@@ -1,11 +1,14 @@
 'use client';
 
 import Square from "@/components/Square";
+import { PieceType } from "@/utils/types";
 import { useRef, useState } from "react";
 
 export default function Board(){
   const [from, setFrom] = useState<number[]>([]);
+  const turn = useRef<PieceType>(PieceType.WHITE);
   const prevPiece = useRef('');
+  const [moves, setMoves] = useState([]);
   const [board, setBoard] = useState([
     ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
     ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
@@ -48,6 +51,9 @@ export default function Board(){
                     from={from}
                     setFrom={setFrom}
                     prevPiece={prevPiece}
+                    turn={turn}
+                    moves={moves}
+                    setMoves={setMoves}
                   />
                 );
               })}
